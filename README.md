@@ -52,3 +52,10 @@ FileReader App (IBM ACE)
 Operator Aggregator App (IBM ACE)
   ├─> Validates JSON using Schema
   └─> Counts operations and returns summary via REST GET
+
+📦 Shared Libraries
+**Hamada** – Contains the DFDL schema used to parse the structured input file.
+
+**Hamada2** – Contains the JSON Schema used to validate the result file.
+Both are reusable shared libraries imported into relevant IBM ACE applications.
+ !This project is for educational and demonstration purposes and is not licensed for commercial use.!
