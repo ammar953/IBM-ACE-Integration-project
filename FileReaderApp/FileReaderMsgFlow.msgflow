@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmFileInput.msgnode="ComIbmFileInput.msgnode" xmlns:ComIbmFileOutput.msgnode="ComIbmFileOutput.msgnode" xmlns:ComIbmSOAPRequest.msgnode="ComIbmSOAPRequest.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="FileReaderMsgFlow.msgflow" nsPrefix="FileReaderMsgFlow.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="FileReaderMsgFlow" bundleName="FileReaderMsgFlow" pluginId="FileReaderApp"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/FileReaderApp/icons/full/obj16/FileReaderMsgFlow.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/FileReaderApp/icons/full/obj30/FileReaderMsgFlow.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="227,47" computeExpression="esql://routine/#FileReaderMsgFlow_Compute.Main">
+        <translation xmi:type="utility:ConstantString" string="Route"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="970,329" outputDirectory="C:\Users\ammar\OneDrive\Desktop" outputFilename="trialres.txt">
+        <translation xmi:type="utility:ConstantString" string="File Output"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="33,48" inputDirectory="C:\Users\ammar\OneDrive\Desktop" filenamePattern="CalcReadInput.txt" messageDomainProperty="DFDL" messageSetProperty="{hamada}" messageTypeProperty="{}:CalculatorDFDL">
+        <translation xmi:type="utility:ConstantString" string="File Input1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="465,54" wsdlFileName="CalculatorService.wsdl" selectedPortType="CalculatorPortType" selectedBinding="CalculatorSOAP_HTTP_Binding" selectedOperation="Addition" selectedPort="CalculatorSOAP_HTTP_Port" targetNamespace="http://tempuri.org/Calculator" useHTTPTransport="true" webServiceURL="http://localhost:7800/CalculatorSOAP_HTTP_Service" sslProtocol="SSL" parserXmlnscBuildTreeUsingXMLSchema="false" validateMaster="none">
+        <translation xmi:type="utility:ConstantString" string="Addition"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="475,180" wsdlFileName="CalculatorService.wsdl" selectedPortType="CalculatorPortType" selectedBinding="CalculatorSOAP_HTTP_Binding" selectedOperation="Division" selectedPort="CalculatorSOAP_HTTP_Port" targetNamespace="http://tempuri.org/Calculator" useHTTPTransport="true" webServiceURL="http://localhost:7800/CalculatorSOAP_HTTP_Service" sslProtocol="TLS">
+        <translation xmi:type="utility:ConstantString" string="Division"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="472,118" wsdlFileName="CalculatorService.wsdl" selectedPortType="CalculatorPortType" selectedBinding="CalculatorSOAP_HTTP_Binding" selectedOperation="Multiplication" selectedPort="CalculatorSOAP_HTTP_Port" targetNamespace="http://tempuri.org/Calculator" useHTTPTransport="true" webServiceURL="http://localhost:7800/CalculatorSOAP_HTTP_Service" sslProtocol="TLS">
+        <translation xmi:type="utility:ConstantString" string="Multiplication"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="480,246" wsdlFileName="CalculatorService.wsdl" selectedPortType="CalculatorPortType" selectedBinding="CalculatorSOAP_HTTP_Binding" selectedOperation="Subtraction" selectedPort="CalculatorSOAP_HTTP_Port" targetNamespace="http://tempuri.org/Calculator" useHTTPTransport="true" webServiceURL="http://localhost:7800/CalculatorSOAP_HTTP_Service" sslProtocol="TLS">
+        <translation xmi:type="utility:ConstantString" string="Subtraction"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="730,108" computeExpression="esql://routine/#FileReaderMsgFlow_Compute2.Main">
+        <translation xmi:type="utility:ConstantString" string="ResultAppend"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="281,325" computeExpression="esql://routine/#FileReaderMsgFlow_Compute1.Main">
+        <translation xmi:type="utility:ConstantString" string="Compute1"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out2" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out3" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out4" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

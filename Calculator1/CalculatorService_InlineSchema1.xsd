@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://tempuri.org/Calculator" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org/Calculator" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/Calculator" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/Calculator">
+        
+  <xsd:complexType name="AddRequest">
+            
+    <xsd:sequence>
+                
+      <xsd:element ref="mrm:OperandA"/>
+                
+      <xsd:element ref="mrm:OperandB"/>
+              
+    </xsd:sequence>
+          
+  </xsd:complexType>
+        
+  <xsd:complexType name="AddResponse">
+            
+    <xsd:sequence>
+                
+      <xsd:element ref="mrm:Result"/>
+              
+    </xsd:sequence>
+          
+  </xsd:complexType>
+        
+  <xsd:complexType name="SubRequest">
+            
+    <xsd:sequence>
+                
+      <xsd:element ref="mrm:OperandA"/>
+                
+      <xsd:element ref="mrm:OperandB"/>
+              
+    </xsd:sequence>
+          
+  </xsd:complexType>
+        
+  <xsd:complexType name="SubResponse">
+            
+    <xsd:sequence>
+                
+      <xsd:element ref="mrm:Result"/>
+              
+    </xsd:sequence>
+          
+  </xsd:complexType>
+        
+  <xsd:complexType name="MultiplyRequest">
+            
+    <xsd:sequence>
+                
+      <xsd:element ref="mrm:OperandA"/>
+                
+      <xsd:element ref="mrm:OperandB"/>
+              
+    </xsd:sequence>
+          
+  </xsd:complexType>
+        
+  <xsd:complexType name="MultiplyResponse">
+            
+    <xsd:sequence>
+                
+      <xsd:element ref="mrm:Result"/>
+              
+    </xsd:sequence>
+          
+  </xsd:complexType>
+        
+  <xsd:complexType name="DivideRequest">
+            
+    <xsd:sequence>
+                
+      <xsd:element ref="mrm:OperandA"/>
+                
+      <xsd:element ref="mrm:OperandB"/>
+              
+    </xsd:sequence>
+          
+  </xsd:complexType>
+        
+  <xsd:complexType name="DivideResponse">
+            
+    <xsd:sequence>
+                
+      <xsd:element ref="mrm:Result"/>
+              
+    </xsd:sequence>
+          
+  </xsd:complexType>
+        
+  <xsd:element name="OperandA" type="xsd:float"/>
+        
+  <xsd:element name="OperandB" type="xsd:float"/>
+        
+  <xsd:element name="Result" type="xsd:float"/>
+        
+  <xsd:element ibmSchExtn:docRoot="true" name="AddRequest" type="mrm:AddRequest"/>
+        
+  <xsd:element ibmSchExtn:docRoot="true" name="AddResponse" type="mrm:AddResponse"/>
+        
+  <xsd:element ibmSchExtn:docRoot="true" name="SubRequest" type="mrm:SubRequest"/>
+        
+  <xsd:element ibmSchExtn:docRoot="true" name="SubResponse" type="mrm:SubResponse"/>
+        
+  <xsd:element ibmSchExtn:docRoot="true" name="MultiplyRequest" type="mrm:MultiplyRequest"/>
+        
+  <xsd:element ibmSchExtn:docRoot="true" name="MultiplyResponse" type="mrm:MultiplyResponse"/>
+        
+  <xsd:element ibmSchExtn:docRoot="true" name="DivideRequest" type="mrm:DivideRequest"/>
+        
+  <xsd:element ibmSchExtn:docRoot="true" name="DivideResponse" type="mrm:DivideResponse"/>
+      
+</xsd:schema>

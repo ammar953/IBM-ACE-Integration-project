@@ -1,0 +1,27 @@
+DECLARE ns NAMESPACE 'http://tempuri.org/Calculator';
+
+
+CREATE COMPUTE MODULE Calculator_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+	DECLARE operation REFERENCE TO InputRoot.SOAP.Context;
+	
+   SET OutputRoot=InputRoot;
+	
+	IF operation.operation='Addition' THEN
+		PROPAGATE TO TERMINAL 'out1';
+		
+
+	
+	ELSEIF operation.operation ='Subtraction' THEN		
+		PROPAGATE TO TERMINAL 'out2';
+	ELSEIF operation.operation ='Multiplication' THEN
+	    PROPAGATE TO TERMINAL 'out3';
+	ELSE
+		PROPAGATE TO TERMINAL 'out4';
+	RETURN TRUE;
+	END IF;
+	END;
+
+
+END MODULE;

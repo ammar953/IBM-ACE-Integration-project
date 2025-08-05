@@ -1,0 +1,31 @@
+
+
+Importing file: C:\Users\ammar\IBM\ACET12\workspace\Calculator\CalculatorService.wsdl
+
+The WSDL import will proceed with bindings CalculatorSOAP_HTTP_Binding.
+Creating wsdl schema document for file:///C:/Users/ammar/IBM/ACET12/workspace/Calculator/CalculatorService.wsdl.
+Parsing wsdl binding {http://tempuri.org/Calculator}CalculatorSOAP_HTTP_Binding.
+Parsing wsdl binding input Division.
+Parsing wsdl binding output Division.
+Parsing wsdl binding input Addition.
+Parsing wsdl binding output Addition.
+Parsing wsdl binding input Multiplication.
+Parsing wsdl binding output Multiplication.
+Parsing wsdl binding input Subtraction.
+Parsing wsdl binding output Subtraction.
+Processing doc style for operation Division.
+Processing doc style for operation Addition.
+Processing doc style for operation Multiplication.
+Processing doc style for operation Subtraction.
+Populating WSDL schema CalculatorService.xsd.
+Creating file CalculatorService.xsd in the workspace.
+Creating file CalculatorService_InlineSchema1.xsd in the workspace.
+Copying source WSDL CalculatorService.wsdl to CalculatorService.wsdl.
+
+Elapsed time processing this message definition file: 0.485 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns="http://tempuri.org/Calculator" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/Calculator" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Calculator" targetNamespace="http://tempuri.org/Calculator">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="CalculatorService_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="CalculatorSOAP_HTTP_Binding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+    
+  <wsdl:types>
+        
+          
+    <xsd:schema xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mrm="http://tempuri.org/Calculator" targetNamespace="http://tempuri.org/Calculator">
+      
+      <xsd:include schemaLocation="CalculatorService_InlineSchema1.xsd"/>
+    </xsd:schema>
+        
+  </wsdl:types>
+    
+  <wsdl:message name="Division_in">
+        
+    <wsdl:part element="DivideRequest" name="DivideRequest"/>
+      
+  </wsdl:message>
+    
+  <wsdl:message name="Division_out">
+        
+    <wsdl:part element="DivideResponse" name="DivideResponse"/>
+      
+  </wsdl:message>
+    
+  <wsdl:message name="Addition_in">
+        
+    <wsdl:part element="AddRequest" name="AddRequest"/>
+      
+  </wsdl:message>
+    
+  <wsdl:message name="Addition_out">
+        
+    <wsdl:part element="AddResponse" name="AddResponse"/>
+      
+  </wsdl:message>
+    
+  <wsdl:message name="Multiplication_in">
+        
+    <wsdl:part element="MultiplyRequest" name="MultiplyRequest"/>
+      
+  </wsdl:message>
+    
+  <wsdl:message name="Multiplication_out">
+        
+    <wsdl:part element="MultiplyResponse" name="MultiplyResponse"/>
+      
+  </wsdl:message>
+    
+  <wsdl:message name="Subtraction_in">
+        
+    <wsdl:part element="SubRequest" name="SubRequest"/>
+      
+  </wsdl:message>
+    
+  <wsdl:message name="Subtraction_out">
+        
+    <wsdl:part element="SubResponse" name="SubResponse"/>
+      
+  </wsdl:message>
+    
+  <wsdl:portType name="CalculatorPortType">
+        
+    <wsdl:operation name="Division">
+            
+      <wsdl:input message="Division_in" name="Division_Input"/>
+            
+      <wsdl:output message="Division_out" name="Division_Output"/>
+          
+    </wsdl:operation>
+        
+    <wsdl:operation name="Addition">
+            
+      <wsdl:input message="Addition_in" name="Addition_Input"/>
+            
+      <wsdl:output message="Addition_out" name="Addition_Output"/>
+          
+    </wsdl:operation>
+        
+    <wsdl:operation name="Multiplication">
+            
+      <wsdl:input message="Multiplication_in" name="Multiplication_Input"/>
+            
+      <wsdl:output message="Multiplication_out" name="Multiplication_Output"/>
+          
+    </wsdl:operation>
+        
+    <wsdl:operation name="Subtraction">
+            
+      <wsdl:input message="Subtraction_in" name="Subtraction_Input"/>
+            
+      <wsdl:output message="Subtraction_out" name="Subtraction_Output"/>
+          
+    </wsdl:operation>
+      
+  </wsdl:portType>
+    
+  <wsdl:binding name="CalculatorSOAP_HTTP_Binding" type="CalculatorPortType">
+        
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        
+    <wsdl:operation name="Division">
+            
+      <soap:operation soapAction=""/>
+            
+      <wsdl:input name="Division_Input">
+                
+        <soap:body parts="DivideRequest" use="literal"/>
+              
+      </wsdl:input>
+            
+      <wsdl:output name="Division_Output">
+                
+        <soap:body parts="DivideResponse" use="literal"/>
+              
+      </wsdl:output>
+          
+    </wsdl:operation>
+        
+    <wsdl:operation name="Addition">
+            
+      <soap:operation soapAction=""/>
+            
+      <wsdl:input name="Addition_Input">
+                
+        <soap:body parts="AddRequest" use="literal"/>
+              
+      </wsdl:input>
+            
+      <wsdl:output name="Addition_Output">
+                
+        <soap:body parts="AddResponse" use="literal"/>
+              
+      </wsdl:output>
+          
+    </wsdl:operation>
+        
+    <wsdl:operation name="Multiplication">
+            
+      <soap:operation soapAction=""/>
+            
+      <wsdl:input name="Multiplication_Input">
+                
+        <soap:body parts="MultiplyRequest" use="literal"/>
+              
+      </wsdl:input>
+            
+      <wsdl:output name="Multiplication_Output">
+                
+        <soap:body parts="MultiplyResponse" use="literal"/>
+              
+      </wsdl:output>
+          
+    </wsdl:operation>
+        
+    <wsdl:operation name="Subtraction">
+            
+      <soap:operation soapAction=""/>
+            
+      <wsdl:input name="Subtraction_Input">
+                
+        <soap:body parts="SubRequest" use="literal"/>
+              
+      </wsdl:input>
+            
+      <wsdl:output name="Subtraction_Output">
+                
+        <soap:body parts="SubResponse" use="literal"/>
+              
+      </wsdl:output>
+          
+    </wsdl:operation>
+      
+  </wsdl:binding>
+    
+  <wsdl:service name="CalculatorService">
+        
+    <wsdl:port binding="CalculatorSOAP_HTTP_Binding" name="CalculatorSOAP_HTTP_Port">
+            
+      <soap:address location="http://localhost:7800/CalculatorSOAP_HTTP_Service"/>
+          
+    </wsdl:port>
+      
+  </wsdl:service>
+  
+</wsdl:definitions>

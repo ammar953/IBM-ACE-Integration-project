@@ -1,0 +1,47 @@
+
+		DECLARE i  INTEGER 1;
+
+CREATE COMPUTE MODULE FileReaderMsgFlow_Compute2
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+	
+		DECLARE op CHARACTER Environment.usr.operation;
+		DECLARE res  CHARACTER;
+	    IF op='+' THEN
+	    	SET res = InputRoot.SOAP.Body.ns:AddResponse.ns:Result;
+
+		ELSEIF op='*' THEN
+		 	SET res = InputRoot.SOAP.Body.ns:MultiplyResponse.ns:Result;
+		ELSEIF op='-' THEN
+			SET res = InputRoot.SOAP.Body.ns:SubResponse.ns:Result;
+				
+		ELSE 
+			SET res = InputRoot.SOAP.Body.ns:DivideResponse.ns:Result;
+				
+		END IF;
+			
+
+SET Environment.data[Environment.I].A=Environment.usr.opA;
+SET Environment.data[Environment.I].B=Environment.usr.opB;
+SET Environment.data[Environment.I].Oper=Environment.usr.operation;
+SET Environment.data[Environment.I].RES=res;
+			
+			SET Environment.I=Environment.I+1;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

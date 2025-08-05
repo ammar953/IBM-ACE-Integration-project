@@ -1,0 +1,33 @@
+
+
+CREATE COMPUTE MODULE Calculator_Add
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+	DECLARE Inroot REFERENCE TO InputRoot.SOAP.Body.ns:AddRequest;
+	DECLARE input1 CHARACTER;
+   	DECLARE input2 CHARACTER;
+
+   	DECLARE f1 FLOAT;
+   	DECLARE f2 FLOAT;
+	SET input1 = Inroot.ns:OperandA;
+    SET input2 = Inroot.ns:OperandB;
+    SET f1 = CAST(input1 AS FLOAT);
+    SET f2 = CAST(input2 AS FLOAT);
+	SET OutputRoot.SOAP.Body.ns:AddResponse.ns:Result = f1+f2;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

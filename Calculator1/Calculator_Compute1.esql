@@ -1,0 +1,43 @@
+
+
+CREATE COMPUTE MODULE Calculator_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+DECLARE operation REFERENCE TO InputRoot.SOAP.Context.operation;
+DECLARE input1 CHARACTER;
+   	DECLARE input2 CHARACTER;
+
+   	DECLARE f1 FLOAT;
+   	DECLARE f2 FLOAT;
+		IF operation='Addition' THEN
+		SET OutputRoot.SOAP.Body.ns:AddResponse.ns:Result='Enter valid operands';
+		ELSEIF operation ='Subtraction' THEN		
+	    SET OutputRoot.SOAP.Body.ns:SubResponse.ns:Result='Enter valid operands';
+		ELSEIF operation ='Multiplication' THEN
+		SET OutputRoot.SOAP.Body.ns:MultiplyResponse.ns:Result='Enter valid operands';
+		ELSE 
+			IF InputRoot.SOAP.Body.ns:DivideRequest.ns:OperandB= '0' THEN
+		    SET OutputRoot.SOAP.Body.ns:DivideResponse.ns:Result='cannot divide by 0';	
+			ELSE
+			SET OutputRoot.SOAP.Body.ns:DivideResponse.ns:Result='Enter valid operands';
+			END IF;	
+		RETURN TRUE;
+		END IF;
+
+				
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

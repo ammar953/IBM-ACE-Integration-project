@@ -1,0 +1,81 @@
+DECLARE ns NAMESPACE 'http://tempuri.org/Calculator';
+
+
+CREATE COMPUTE MODULE FileReaderMsgFlow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE I INT 1;
+		DECLARE total INT CARDINALITY(InputRoot.DFDL.CalculatorDFDL.record[]);
+		
+SET  Environment.I =1;
+		WHILE I<=total DO
+			DECLARE op CHAR InputRoot.DFDL.CalculatorDFDL.record[I].operator;
+			DECLARE opA FLOAT InputRoot.DFDL.CalculatorDFDL.record[I].operandA;
+		
+		    DECLARE opB FLOAT InputRoot.DFDL.CalculatorDFDL.record[I].operandB;
+		    SET  Environment.usr = InputRoot;
+		    
+		    SET Environment.usr.operation = op;
+		    		    SET Environment.usr.opA = opA;
+		    		    SET Environment.usr.opB = opB;
+		    
+		    
+		    SET I=I+1;
+		    IF op='+' THEN
+			
+			    SET OutputRoot.SOAP.Body.ns:AddRequest.ns:OperandA=opA;
+		        SET OutputRoot.SOAP.Body.ns:AddRequest.ns:OperandB=opB;
+		        PROPAGATE TO TERMINAL 'out';
+		        DELETE FIELD OutputRoot.*;
+		    ELSEIF op='*' THEN
+			
+		 	    SET OutputRoot.SOAP.Body.ns:MultiplyRequest.ns:OperandA=opA;
+			    SET OutputRoot.SOAP.Body.ns:MultiplyRequest.ns:OperandB=opB;
+			    PROPAGATE TO TERMINAL 'out2';
+			        DELETE FIELD OutputRoot.*;
+		    ELSEIF op='-' THEN
+		    	SET OutputRoot.SOAP.Body.ns:SubRequest.ns:OperandA=opA;
+			    SET OutputRoot.SOAP.Body.ns:SubRequest.ns:OperandB=opB;
+			    PROPAGATE TO TERMINAL 'out4';
+			        DELETE FIELD OutputRoot.*;
+		    ELSE 
+			
+			    SET OutputRoot.SOAP.Body.ns:DivideRequest.ns:OperandA=opA;
+			    SET OutputRoot.SOAP.Body.ns:DivideRequest.ns:OperandB=opB;
+			    PROPAGATE TO TERMINAL 'out3';
+			    DELETE FIELD OutputRoot.*;
+		    END IF;
+		END WHILE;
+		
+		
+		
+		
+		
+		
+		 PROPAGATE TO TERMINAL 'out1';
+		
+		RETURN FALSE;
+
+		
+				
+			
+			
+
+	
+			
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "fileReaderJsonSchema",
+  "type":"object",
+  "properties":{"object":{
+  "A":{
+   "type":"number"
+  },
+  "B":{
+   "type":"number"
+  },
+  "Oper":{
+   "type":"string"
+  },
+  "Res":{
+   "type":"number"
+  }
+  }}
+}
